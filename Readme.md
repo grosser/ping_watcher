@@ -13,7 +13,7 @@ TODO: Write usage instructions here
 ## Development
 
 - `./bin/shell` to open a shell (only works for me ...)
-- crystal build xxx.rb -> create eecutable
+- crystal build bin/ping-watcher.cr -> create executable
 
 ## Contributors
 
