@@ -1,1 +1,2 @@
-shell to open a shell
+ - shell to open a shell
+ - crystal build xxx.rb -> create eecutable
