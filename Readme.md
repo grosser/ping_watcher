@@ -13,7 +13,8 @@ TODO: Write usage instructions here
 ## Development
 
 - `./bin/shell` to open a shell (only works for me ...)
-- crystal build bin/ping-watcher.cr -> create executable
+- `crystal build bin/ping-watcher.cr --release` # create executable
+- `crystal spec` # run tests
 
 ## Contributors
 
