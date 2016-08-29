@@ -12,9 +12,24 @@ describe PingWatcher do
       Helper.watch("--help").should contain "Show this help"
     end
 
-    it "prints results" do
+    it "fails with multiple arguments" do
+      Helper.watch("foo bar", true).should contain "Need host argument"
+    end
+
+    it "prints good results" do
       result = Helper.watch("localhost -c 100 -s 0")
-      result.should contain "Rating: Excellent"
+      result.should contain "Excellent"
+    end
+
+    it "prints bad results" do
+      result = Helper.watch("missing -c 100 -s 0")
+      result.should contain "Bad, failure rate 100%"
+    end
+
+    it "does not sleep on last iteration" do
+      Helper.binary # trigger build so it does not fail when run alone
+      result = Benchmark.realtime { Helper.watch("localhost -c 1 -s 1") }
+      result.to_f.should be < 1.0
     end
   end
 end

@@ -1,5 +1,6 @@
 require "spec"
 require "tempfile"
+require "benchmark"
 
 require "../src/ping_watcher"
 
@@ -10,11 +11,11 @@ class Helper
     result
   end
 
-  def self.watch(args)
-    sh "#{binary} #{args}"
+  def self.watch(args, fail = false)
+    sh "#{binary} #{args} 2>&1", fail
   end
 
-  private def self.binary
+  def self.binary
     @@binary ||= begin
       temp = Tempfile.new("ping-watch")
       Helper.sh("crystal build bin/ping-watcher.cr -o #{temp.path}")

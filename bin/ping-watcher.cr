@@ -1,11 +1,14 @@
 require "option_parser"
 require "../src/ping_watcher"
 
-options = {} of Symbol => Int32|Float32
+options = {
+  count: 10 * 60,
+  sleep: 1
+} of Symbol => Int32|Float32
 OptionParser.parse! do |parser|
   parser.banner = "Usage: ping-watcher [options]"
 
-  parser.on("-c=COUNT", "--count=COUNT", "How often to run. Default: forever") do |c|
+  parser.on("-c=COUNT", "--count=COUNT", "How often to run. Default: 10 minutes") do |c|
     options[:count] = c.to_i
   end
 
@@ -24,4 +27,6 @@ OptionParser.parse! do |parser|
   end
 end
 
-PingWatcher.run(options)
+raise "Need host argument" unless ARGV.size == 1
+
+PingWatcher.run(ARGV[0], options)
