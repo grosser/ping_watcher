@@ -1,7 +1,7 @@
 require "./ping_watcher/*"
 
 module PingWatcher
-  def self.run
-    puts 111
+  def self.run(options)
+    puts options
   end
 end

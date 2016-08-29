@@ -11,5 +11,10 @@ describe PingWatcher do
       Helper.watch("-h").should contain "Show this help"
       Helper.watch("--help").should contain "Show this help"
     end
+
+    it "prints results" do
+      result = Helper.watch("localhost -c 100 -s 0")
+      result.should contain "Rating: Excellent"
+    end
   end
 end
