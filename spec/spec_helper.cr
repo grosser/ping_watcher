@@ -15,6 +15,8 @@ class Helper
     sh "#{binary} #{args} 2>&1", fail
   end
 
+  @@binary : Nil|String
+
   def self.binary
     @@binary ||= begin
       temp = Tempfile.new("ping-watch")

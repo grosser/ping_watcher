@@ -1,10 +1,10 @@
 require "option_parser"
 require "../src/ping_watcher"
 
-options = {
-  count: 10 * 60,
-  sleep: 1
-} of Symbol => Int32|Float32
+options = {} of Symbol => Int32|Float32
+options[:count] = 10 * 60
+options[:sleep] = 1
+
 OptionParser.parse! do |parser|
   parser.banner = "Usage: ping-watcher [options]"
 

@@ -32,6 +32,12 @@ TODO: compile for osx ... `crystal build bin/ping-watcher.cr --release --cross-c
 - TODO: setup travis
 - `crystal spec` # run tests
 
+```
+docker build -t ping_watcher . 2>&1 >/dev/null &&
+  docker run -it --rm ping_watcher crystal spec
+
+```
+
 ## Author
 
 [Michael Grosser](http://grosser.it)<br/>

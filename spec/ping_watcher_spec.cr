@@ -17,7 +17,7 @@ describe PingWatcher do
     end
 
     it "prints good results" do
-      result = Helper.watch("localhost -c 100 -s 0")
+      result = Helper.watch("127.0.0.1 -c 100 -s 0")
       result.should contain "Excellent"
     end
 
